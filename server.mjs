@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000
 
 let userBase = [];
 
-app.post('/signup', (req,res) => {
+app.post('https://express-practice-signup.herokuapp.com/signup', (req,res) => {
 
     let body = req.body;
 
