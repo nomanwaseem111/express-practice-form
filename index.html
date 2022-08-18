@@ -28,11 +28,11 @@
         <br>
         <br>
         <label for=""> Password :</label>
-        <input type="password" id="firstname">
+        <input type="password" id="password">
         <br>
         <br>
         <label for=""> Repeatpassword :</label>
-        <input type="password" id="firstname">
+        <input type="password" id="repeatpassword">
         <br>
         <br>
         <input type="submit" value="signup" id="">
@@ -44,9 +44,20 @@
 
         const signup = () => {
 
+            const firstname = document.getElementById('firstname').value;
+            const lastname = document.getElementById('lastname').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const repeatPassword = document.getElementById('repeatpassword').value;
+
+
+            if(password !== repeatPassword ){
+                document.getElementById('message').innerHTML = "Password Do not match"
+            }
+            
         axios.post('http://localhost:3000/signup', {
-            firstName,
-            lastName,
+            firstname,
+            lastname,
             email,
             password 
         })
