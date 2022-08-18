@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000
 
 let userBase = [];
 
-app.post('https://express-practice-signup.herokuapp.com/signup', (req,res) => {
+app.post('/signup', (req,res) => {
 
     let body = req.body;
 
@@ -31,7 +31,7 @@ app.post('https://express-practice-signup.herokuapp.com/signup', (req,res) => {
 
         for(let i = 0; i < userBase.length; i++){
 
-            if(userBase[i].email === body.email){
+            if(userBase[i].email === body.email.toLowerCase()){
                 isFound = true
                 break;
             }
@@ -46,13 +46,14 @@ app.post('https://express-practice-signup.herokuapp.com/signup', (req,res) => {
 
             firstname : body.firstname,
             lastname : body.lastname,
-            email : body.email.toLowerCase,
+            email : body.email.toLowerCase(),
             password : body.password
         }
 
         userBase.push(newUser);
 
-        res.status(201).send({message : "User is Created"});
+        res.status(201).send({ message : "User is Created" })
+        return;
 })
 
 
